@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magic Trick</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #fbeaff;
+      color: #333;
+      padding: 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 400px;
+      position: relative;
+    }
+    button {
+      padding: 10px 20px;
+      background: #ff69b4;
+      border: none;
+      border-radius: 20px;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+    .hidden {
+      display: none;
+    }
+    .spin {
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🪄 Magic Trick Time! 🪄</h1>
+    <p id="instruction">Think of a number between 1 and 10...</p>
+    <button id="start">I’m ready!</button>
+    <div id="reveal" class="hidden">
+      <p>Okay... Concentrating... 🧠</p>
+      <p id="loading" class="hidden spin">🔮</p>
+      <p id="magic" class="hidden">Your number is... <strong>7!</strong></p>
+      <p id="wink" class="hidden">Also, you're way cuter than this trick 😉</p>
+    </div>
+  </div>
+  <script>
+    const startButton = document.getElementById('start');
+    const reveal = document.getElementById('reveal');
+    const loading = document.getElementById('loading');
+    const magic = document.getElementById('magic');
+    const wink = document.getElementById('wink');
+
+    startButton.addEventListener('click', () => {
+      startButton.classList.add('hidden');
+      reveal.classList.remove('hidden');
+      loading.classList.remove('hidden');
+
+      setTimeout(() => {
+        loading.classList.add('hidden');
+        magic.classList.remove('hidden');
+        
+        setTimeout(() => {
+          wink.classList.remove('hidden');
+        }, 2000);
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
